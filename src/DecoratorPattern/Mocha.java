@@ -1,7 +1,6 @@
 package DecoratorPattern;
 
 public class Mocha extends CondimentDecorator {
-    Beverage beverage; // It has reference variable
 
     public Mocha(Beverage beverage) {
         this.beverage = beverage;
