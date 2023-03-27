@@ -1,6 +1,6 @@
 package IteratorPattern;
 
-public class MenuItem {
+public class MenuItem extends MenuComponent {
     String name;
     String description;
     boolean vegetarian;
@@ -27,5 +27,14 @@ public class MenuItem {
 
     public double getPrice() {
         return price;
+    }
+
+    public void print() {
+        System.out.print(" " + getName());
+        if (isVegetarian()) {
+            System.out.print(" (v) ");
+        }
+        System.out.print(", " + getPrice());
+        System.out.println("     -- " + getDescription());
     }
 }
