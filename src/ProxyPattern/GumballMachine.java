@@ -1,8 +1,11 @@
 package ProxyPattern;
 
+import java.rmi.*;
+import java.rmi.server.*;
 import java.util.Random;
 
-public class GumballMachine {
+public class GumballMachine extends UnicastRemoteObject implements GumballMachineRemote {
+    private static final long serialVersionUID = 2L;
     GumballState soldOutState;
     GumballState noQuarterState;
     GumballState hasQuarterState;
@@ -15,7 +18,7 @@ public class GumballMachine {
     public Random rand;
     String location;
 
-    public GumballMachine(String location, int count) {
+    public GumballMachine(String location, int count) throws RemoteException {
         soldOutState = new SoldOutState(this);
         soldState = new SoldState(this);
         hasQuarterState = new HasQuarterState(this);

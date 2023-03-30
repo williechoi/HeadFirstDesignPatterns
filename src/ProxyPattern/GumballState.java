@@ -1,8 +1,10 @@
 package ProxyPattern;
 
-public interface GumballState {
-    void insertQuarter();
-    void ejectQuarter();
-    void turnCrank();
-    void dispense();
+import java.io.*;
+
+public interface GumballState extends Serializable {
+    public void insertQuarter();
+    public void ejectQuarter();
+    public void turnCrank();
+    public void dispense();
 }
