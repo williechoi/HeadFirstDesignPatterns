@@ -37,7 +37,6 @@ public class ImageProxy implements Icon {
 
     @Override
     public void paintIcon() {
-
     }
 
     synchronized void setImageIcon(ImageIcon imageIcon) {
