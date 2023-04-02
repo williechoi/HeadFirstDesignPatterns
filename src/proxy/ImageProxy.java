@@ -32,7 +32,6 @@ public class ImageProxy implements Icon {
         } else {
             return 600;
         }
-
     }
 
     @Override
