@@ -3,14 +3,17 @@ package compound;
 public class DuckSimulator {
     public static void main(String[] args) {
         DuckSimulator simulator = new DuckSimulator();
-        simulator.simulate();
+        AbstractDuckFactory duckFactory = new CountingDuckFactory();
+        AbstractGooseFactory gooseFactory = new GooseFactory();
+        simulator.simulate(duckFactory, gooseFactory);
     }
 
-    void simulate() {
-        Quackable mallardDuck = new MallardDuck();
-        Quackable redheadDuck = new RedheadDuck();
-        Quackable duckCall = new DuckCall();
-        Quackable rubberDuck = new RubberDuck();
+    void simulate(AbstractDuckFactory duckFactory, AbstractGooseFactory gooseFactory) {
+        Quackable mallardDuck = duckFactory.createMallardDuck();
+        Quackable redheadDuck = duckFactory.createRedheadDuck();
+        Quackable duckCall = duckFactory.createDuckCall();
+        Quackable rubberDuck = duckFactory.createRubberDuck();
+        Quackable gooseDuck = new GooseAdapter(gooseFactory.createGoose());
 
         System.out.println("\nDuck Simulator");
 
@@ -18,6 +21,9 @@ public class DuckSimulator {
         simulate(redheadDuck);
         simulate(duckCall);
         simulate(rubberDuck);
+        simulate(gooseDuck);
+
+        System.out.println("The ducks quacked " + QuackCounter.getQuacks() + " times");
     }
 
     void simulate(Quackable duck) {
