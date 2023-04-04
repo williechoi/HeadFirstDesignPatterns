@@ -1,4 +1,5 @@
 package proxy;
+
 import java.net.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -46,12 +47,12 @@ public class ImageProxy implements Icon {
         if (imageIcon != null) {
             imageIcon.paintIcon(c, g, x, y);
         } else {
-            g.drawString("Loading album cover, please wait...", x+300, y+190);
-            if ( ! retrieving) {
+            g.drawString("Loading album cover, please wait...", x + 300, y + 190);
+            if (!retrieving) {
                 retrieving = true;
 
                 retrievalThread = new Thread(new Runnable() {
-                    public void run () {
+                    public void run() {
                         try {
                             setImageIcon(new ImageIcon(imageURL, "Album Cover"));
                             c.repaint();
